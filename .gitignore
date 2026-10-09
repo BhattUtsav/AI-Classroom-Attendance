@@ -1,0 +1,31 @@
+# Python
+
+venv/
+.venv/
+**pycache**/
+*.py[cod]
+
+# Student data and attendance records
+
+attendance.db
+attendance_backup.db
+*.db
+source_photos/
+face_samples/
+
+# Trained face-recognition models
+
+models/
+
+# Secrets and local camera settings
+
+.env
+.env.*
+!.env.example
+config.local.py
+
+# Editor and operating-system files
+
+.vscode/
+.DS_Store
+Thumbs.db
