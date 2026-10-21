@@ -1,0 +1,35 @@
+AI CLASSROOM ATTENDANCE — LIVE FEED PERFORMANCE FIX
+
+This patch updates app.py only. It does not contain or replace attendance.db,
+student face samples, source photos, models, labels, or your virtual environment.
+
+CHANGES
+- Reads one camera frame per refresh instead of draining multiple MJPEG frames.
+- Caps the processing/display width at 640 px before face detection.
+- Uses a slightly faster Haar-cascade scan scale on the resized frame.
+- Removes the interactive dataframe from the frame-by-frame refresh loop.
+- Keeps the existing LBPH threshold and the 2-second / 5-frame attendance confirmation.
+
+INSTALL SAFELY
+1. Stop Streamlit with Ctrl+C.
+2. Make a copy of your current app.py before replacing it.
+3. Extract this ZIP to a temporary folder first.
+4. Copy only app.py from the extracted folder to:
+   C:\Users\Acer\Desktop\AI-Classroom-Attendance
+5. In PowerShell run:
+   cd C:\Users\Acer\Desktop\AI-Classroom-Attendance
+   .\venv\Scripts\Activate.ps1
+   python -m py_compile app.py
+   python -m streamlit run app.py
+6. Open http://localhost:8501 and start Live Attendance.
+
+CAMERA SETTINGS
+For best performance, set IP Webcam's video resolution to 640x480 (or 800x600)
+and keep the phone/computer on the same stable Wi-Fi network. If the camera is
+still slow, test http://10.128.201.119:8080/video in a browser and close other
+apps streaming from the phone camera.
+
+SAFETY
+The recognition threshold is not loosened. Green matches still require the
+existing stability confirmation; amber/red results do not create new attendance.
+Test with enrolled and unknown faces before using attendance records.

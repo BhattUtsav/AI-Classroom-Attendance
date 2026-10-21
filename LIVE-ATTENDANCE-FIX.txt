@@ -1,0 +1,29 @@
+AI CLASSROOM ATTENDANCE — CONTINUOUS LIVE CAMERA FIX
+
+This update changes only app.py. It does not include or replace your database,
+face samples, source photos, labels, or trained model.
+
+INSTALL
+1. Stop Streamlit in PowerShell with Ctrl+C.
+2. Make sure this ZIP is extracted into:
+   C:\Users\Acer\Desktop\AI-Classroom-Attendance
+   Replace app.py only. Do not replace attendance.db, face_samples, source_photos,
+   models, or venv.
+3. In PowerShell:
+   cd C:\Users\Acer\Desktop\AI-Classroom-Attendance
+   .\venv\Scripts\Activate.ps1
+   python -m py_compile app.py
+   python -m streamlit run app.py
+4. Open http://localhost:8501 and go to Live Attendance.
+5. Confirm the phone is streaming in IP Webcam. Use:
+   http://10.128.201.119:8080/video
+6. Click Start live attendance. The preview should refresh continuously and draw
+   green accepted-match, amber uncertain-match, and red unknown/low-match boxes.
+   Use Stop live attendance to release the camera.
+
+ATTENDANCE SAFETY
+A registered student is marked present only after the accepted name remains visible
+for at least 2 seconds and at least 5 frames. An amber/red result is not marked.
+LBPH score is a distance, not a probability. Test known students and unknown people
+before relying on attendance. This model currently has samples for only the students
+whose IDs are present in face_samples and models/labels.txt.
